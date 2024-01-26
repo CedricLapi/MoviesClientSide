@@ -3,15 +3,21 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Forms from './components/Form'
+import Display from './components/Display'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [movieList, setMovieList] = useState([])
 
   return (
     <>
-      <Forms />
+    <div className='row'>
+      
+      <Forms movieList={movieList} setMovieList={setMovieList} />
+      <Display movieList={movieList} />
+    </div>
     </>
   )
 }
 
-export default App
+export default App;
