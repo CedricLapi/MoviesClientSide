@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Forms from './components/Form'
 import Display from './components/Display'
+import UseReducerForm from './components/UseReducerForm'
 
 function App() {
   
@@ -12,7 +13,8 @@ function App() {
   return (
     <>
     <div className='row'>
-      
+
+      <UseReducerForm />
       <Forms movieList={movieList} setMovieList={setMovieList} />
       <Display movieList={movieList} />
     </div>

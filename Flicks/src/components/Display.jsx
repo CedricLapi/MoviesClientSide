@@ -9,7 +9,7 @@ const Display = ({movieList}) => {
     <div>
         <h1>Display of all them Movies:</h1>
 
-        <div className="col-5 offset-2">
+        <div className="col-4 offset-2">
 
         {
           movieList.map((movie, i) => (
