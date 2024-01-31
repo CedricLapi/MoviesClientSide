@@ -28,8 +28,8 @@ const reducer = (state, action) => {
                 return {
                     ...state,
                     email:{
-                        ...state.email,
-                        value: action.payload
+                        ...state.email.value,
+                        error: action.payload
                     }
                 }
                 
@@ -42,12 +42,12 @@ const reducer = (state, action) => {
                 }
             }
 
-            case 'SET_EMAIL_ERROR':
+            case 'SET_PASSWORD_ERROR':
             return {
                 ...state,
                 password:{
-                    ...state.password,
-                    value: action.payload
+                    ...state.password.value,
+                    error: action.payload
                 }
             }
 
@@ -69,14 +69,14 @@ const UseReducerForm = () => {
         if (e.target.value.length < 5){
             dispatch({
                 type: "SET_EMAIL_ERROR",
-                payload:'Email must be at least 5 characters' 
-            })
+                payload:"Email must be at least 5 characters" 
+            });
 
         } else {
             dispatch({
                 type: "SET_EMAIL_ERROR",
-                payload:''
-            })
+                payload:""
+            });
         }
 
         dispatch({
@@ -91,13 +91,13 @@ const UseReducerForm = () => {
         if (e.target.value.length < 8){
             dispatch({
                 type: "SET_PASSWORD_ERROR",
-                payload:'Password must be at least 8 characters' 
-            })
+                payload:"Password must be at least 8 characters" 
+            });
 
         } else {
             dispatch({
                 type: "SET_PASSWORD_ERROR",
-                payload:''
+                payload:""
             })
         }
 
@@ -127,21 +127,21 @@ const UseReducerForm = () => {
     <p>
         <label htmlFor="">Email:</label>
         <input onChange={(e) => handleEmailChange(e)} type="email" value={state.email.value} />
-        {
-            state.email.error !== null && (
-                <small>{state.email.error}</small>
+
+        {state.email.error !== null && (
+                <p className="error">{state.email.error}</p>
                 /*state.email.error !== null ? <small>{state.email.error}</small> : null */
-            )
-        }
+            )}
+
     </p>
     <p>
         <label htmlFor="">Password:</label>
         <input onChange={(e) => handlePasswordChange(e)} type="password" value={state.password.value} />
-        {
-            state.password.error !== null && (
-                <small>{state.password.error}</small>
-            )
-        }
+
+        {state.password.error !== null && (
+                <p className="error">{state.password.error}</p>
+            )}
+
     </p>
     <input type="submit" value="Register" />
     </form> 
